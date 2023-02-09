@@ -1,14 +1,25 @@
-const http = require('http');
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 
+const app = express()
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 3001;
+const jsonParser = bodyParser.json()
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
+app.use(cors())
 
-server.listen(port, hostname, () => {
+app.post('/saveNote', jsonParser, (req, res) => {
+  const noteToSave = {
+    name: req.body.name,
+    email: req.body.email,
+    notes: req.body.notes
+  }
+
+  // TODO: save to DB or locally for testing
+  res.send(noteToSave)
+})
+
+app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
