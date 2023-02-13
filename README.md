@@ -2,9 +2,9 @@
 
 You'll need a few tools to setup this project:
 
-- PostgreSQL [https://www.postgresql.org/download/](Installation Instructions)
-- Node v18+ [https://nodejs.org/en/download/](Installation Instructions)
-- pgAdmin v4+ [https://www.pgadmin.org/download/](Installation Instructions) (optional)
+- PostgreSQL [Installation Instructions](https://www.postgresql.org/download/)
+- Node v18+ [Installation Instructions](https://nodejs.org/en/download/)
+- pgAdmin v4+ [Installation Instructions](https://www.pgadmin.org/download/) (optional)
 
 Once those are installed, run PostgreSQL locally and create a database in your local PostgreSQL instance. I've created one called "canvasing" but you can name it anything you'd like.
 
@@ -16,9 +16,9 @@ Navigate to the project directory and run `node src/app.js`
 
 This will run the app in development mode.
 
-Open [http://localhost:3001/healthCheck](http://localhost:3001/healthCheck) in your favorite browser to ensure the app is running correctly.
+Open [Health Check](http://localhost:3001/healthCheck) in your favorite browser to ensure the app is running correctly.
 
-You will also need to download and run the frontend, which is located [https://github.com/ronwthompson/canvasing-front](here).
+You will also need to download and run the frontend, which is located [here](https://github.com/ronwthompson/canvasing-front).
 
 ### `npm test`
 
