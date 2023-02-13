@@ -8,30 +8,47 @@ const port = 3001;
 const jsonParser = bodyParser.json()
 
 const { Client } = require("pg");
-const client = new Client({
+const credentials = { // be sure to edit this object with your credentials!
   user: "postgres",
   host: "localhost",
   database: "canvasing",
-  password: "travelandEat01!",
+  password: "",
   port: 5432,
-})
+}
 
 app.use(cors())
 
 app.post('/saveNote', jsonParser, (req, res) => {
-  const noteToSave = {
-    name: req.body.name,
-    email: req.body.email,
-    notes: req.body.notes
-  }
-
+  const client = new Client(credentials)
   client.connect();
 
   client.query(`
-    INSERT INTO notes_again (id, name, notes, email) 
-    values (gen_random_uuid(), '${req.body.name}', '${req.body.notes}', '${req.body.email}')`);
+    INSERT INTO notes_table (id, name, notes, email) 
+    values (gen_random_uuid(), '${req.body.name}', '${req.body.notes}', '${req.body.email}')`)
+    .then(results => {
+      res.send(results)
+    })
+    .catch(err => {
+      throw err
+    })
+    .then(() => {
+      client.end()
+    })
+})
 
-  res.send(noteToSave)
+app.get('/viewNotes', jsonParser, (req, res) => {
+  const client = new Client(credentials)
+  client.connect();
+  client.query(`SELECT * from notes_table`)
+    .then(results => {
+      res.send(results.rows)
+    })
+    .catch(err => {
+      throw err
+    })
+    .then(() => {
+      client.end()
+    })
 })
 
 app.listen(port, hostname, () => {
