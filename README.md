@@ -19,7 +19,3 @@ This will run the app in development mode.
 Open [Health Check](http://localhost:3001/healthCheck) in your favorite browser to ensure the app is running correctly.
 
 You will also need to download and run the frontend, which is located [here](https://github.com/ronwthompson/canvasing-front).
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
